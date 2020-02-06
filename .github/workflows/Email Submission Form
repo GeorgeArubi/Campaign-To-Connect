@@ -1,0 +1,90 @@
+<style>
+.submit {
+    cursor: pointer;
+    display: block;
+    border-bottom-left-radius: 0px !important;
+    border-bottom-right-radius: 0px !important;
+    border-bottom-width: 0px !important;
+    border-left-width: 0px !important;
+    border-right-width: 0px !important;
+    border-top-left-radius: 0px !important;
+    border-top-right-radius: 0px !important;
+    border-top-width: 0px !important;
+    box-shadow: rgb(255, 255, 255) 0px 0px 0px 0px !important;
+    color: rgb(255, 255, 255) !important;
+    font-family: "Open Sans" !important;
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0px !important;
+    line-height: 1 !important;
+    margin-bottom: 0px !important;
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+    margin-top: 0px !important;
+    max-width: 100% !important;
+    padding-bottom: 14px !important;
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+    padding-top: 14px !important;
+    text-transform: none !important;
+    width: 100% !important;
+    background: rgb(187, 19, 62) !important;
+    border-color: rgba(0, 0, 0, 0.35) !important;
+    border-style: none !important;
+    text-decoration: none !important;
+}
+
+label.invalid {
+    color: rgb(255, 0, 0) !important;
+    display: inline-block;
+    font-family: "Open Sans" !important;
+    font-size: 12px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0px !important;
+    padding-bottom: 4px !important;
+    text-transform: none !important;
+    text-decoration: none !important;
+}
+</style>
+<div id="errorcontainer_siwsibf9iegk4d2"></div>
+<form id="form_siwsibf9iegk4d2" action="https://uso.trilogyforms.com/save" method="post">
+    <input type="text" name="emailaddress_siwsibf9iegk4d2" />
+    <input type="hidden" name="activitycode_siwsibf9iegk4d2" value="sample" /><br /><br />
+	<button type="submit" name="submit_siwsibf9iegk4d2" class="submit">Submit Form</button>
+</form>
+<a id="closelink_siwsibf9iegk4d2" href="#" class="om-trigger-close"></a>
+
+<script type="text/javascript">
+    $("#form_siwsibf9iegk4d2").validate({
+        errorClass: "invalid",
+        errorLabelContainer: "#errorcontainer_siwsibf9iegk4d2",
+        onsubmit: true,
+        rules: {
+            emailaddress_siwsibf9iegk4d2: {
+                required: true,
+                email: true
+            }
+        },
+        messages: {
+            emailaddress_siwsibf9iegk4d2: {
+                required: "We need your email address to contact you",
+                email: "Your email address must be in the format of name@domain.com"
+            }
+        },
+        submitHandler: function(form) {
+            $.ajax({
+                url: form.action,
+                type: form.method,
+                data: "EmailAddress=" + form.emailaddress_siwsibf9iegk4d2.value + "&ActivityCode=" + form.activitycode_siwsibf9iegk4d2.value,
+                error: function(xhr, status, error) {
+                    // TODO: implement error handler
+                    var msg = '<label class="invalid" for="emailaddress_siwsibf9iegk4d2">There was an error. Please try again later</label>';
+                    $("#errorcontainer_siwsibf9iegk4d2").empty().append(msg).show();
+                },
+                success: function(data) {
+                    // Close OptinMonster window
+                    $("#closelink_siwsibf9iegk4d2")[0].click();
+                }
+            });
+        }
+    });
