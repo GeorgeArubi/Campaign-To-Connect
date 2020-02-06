@@ -1,0 +1,268 @@
+<style>
+.submit {
+    cursor: pointer;
+    display: block;
+    box-shadow: rgb(255, 255, 255) 0px 0px 0px 0px !important;
+    background-color: #bb133e !important;
+    color: #ffffff !important;
+    background-image: linear-gradient(to right, #8d0e2f, #bb133e) !important;
+    font-family:  "Whitney SSm A", "Whitney SSm B", "Whitney SSm", "Verdana", "Helvetica Neue", "HelveticaNeue", Arial, Helvetica, "Roboto", sans-serif !important;
+    font-size: 14px !important;
+    font-weight: 70 !important;
+    letter-spacing: 0px !important;
+    line-height: 1 !important;
+    margin: 0 auto;
+    padding-bottom: 22px !important;
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+    padding-top: 22px !important;
+    text-transform: none !important;
+    width: 45% !important;
+    max-width: 100% !important;
+    border-style: none !important;
+    text-decoration: none !important;
+    border-radius: 4px !important;
+}
+
+form {
+    margin-bottom: 0px !important;
+    margin-left: 50px !important;
+    margin-right: 50px !important;
+    margin-top: 0px !important;
+    max-width: 100% !important;
+    font-family: "Whitney SSm A", "Whitney SSm B", "Whitney SSm", "Verdana", "Helvetica Neue", "HelveticaNeue", Arial, Helvetica, "Roboto", sans-serif  !important;
+    color: #676767;
+}
+
+select {
+    font-family: "Whitney SSm A", "Whitney SSm B", "Whitney SSm", "Verdana", "Helvetica Neue", "HelveticaNeue", Arial, Helvetica, "Roboto", sans-serif  !important;
+    color: #676767;
+    padding-left: 25px !important;
+    padding-right: 25px !important;
+}
+
+table {
+    text-align: left;
+     margin-right: -7px !important;
+     margin-left: -6px !important;
+
+}
+
+th{
+    padding-left: 5px !important;
+}
+
+td {
+  padding: 5px !important;
+}
+
+.textField {
+    border-radius: 4px !important;
+    border: 1px solid !important;
+    border-color: #d9d9d9 !important;
+    box-shadow: none !important;
+}
+
+label.invalid {
+    color: rgb(255, 0, 0) !important;
+    display: inline-block;
+    font-family: font-family: "Whitney SSm A", "Whitney SSm B", "Whitney SSm", "Verdana", "Helvetica Neue", "HelveticaNeue", Arial, Helvetica, "Roboto", sans-serif  !important;
+    font-size: 12px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0px !important;
+    padding-bottom: 4px !important;
+    text-transform: none !important;
+    text-decoration: none !important;
+}
+input[name=emailaddress_shakushaku] { 
+     margin-top: 5px !important;
+} 
+</style>
+
+<div id="errorcontainer_shakushaku"></div>
+<form id="form_shakushaku">
+        <select name="canned_message_shakushaku" class="textField">
+            <option value="" disabled selected="selected">Select Message</option>
+            <option value="Thank you for all you do. We love and support you!">Thank you for all you do. We love and support you!</option>
+            <option value="Thank you for keeping us safe. Stay strong.">Thank you for keeping us safe. Stay strong. </option>
+            <option value="What you do makes me proud to be an American."> What you do makes me proud to be an American.</option>
+            <option value="I’m grateful for your service.">I’m grateful for your service.</option>
+            <option value="Custom">Add Custom Message</option>
+        </select>
+        <br/>
+ 
+    <div name="custom_block_shakushaku" style="display: none;">
+         <br/>
+         <textarea name="custom_message_shakushaku" class="textField" maxlength="250" rows="4" cols="50" placeholder="Insert a custom message here or select from the drop down above"></textarea>
+    </div>
+    
+    <br/>Sincerely,<br/><br/>
+    
+    <table>
+        <tr>
+            <th><label for="firstname_shakushaku">First Name</label></th>
+            <th><label for="lastname_shakushaku">Last Name</label></th> 
+        </tr>
+        <tr>
+            <td><input name="firstname_shakushaku" class="textField" maxlength="100" size="100" type="text" /></td>
+            <td><input name="lastname_shakushaku" class="textField" maxlength="100" size="100" type="text" /></td>
+        </tr>
+    </table>
+    
+    <br/>
+
+    <label for="emailaddress_shakushaku">Email* <em>(required)</em></label>
+    <input name="emailaddress_shakushaku" class="textField" type="text" />
+    
+    <input type="hidden" name="activitycode_shakushaku" value="ctc-pop" />
+    <input type="hidden" name="message_shakushaku" value="" />
+        
+    <br/><br/>
+
+	<button type="submit" name="submit_shakushaku" class="submit">SHARE MESSAGE</button>
+</form>
+<a id="closelink_shakushaku" href="#" class="om-trigger-close"></a>
+
+<script type="text/javascript">
+    // Function to generate UUID values
+    // https://stackoverflow.com/questions/105034/create-guid-uuid-in-javascript
+    var UUID = (function() {
+      var self = {};
+      var lut = []; for (var i=0; i<256; i++) { lut[i] = (i<16?'0':'')+(i).toString(16); }
+      self.generate = function() {
+        var d0 = Math.random()*0xffffffff|0;
+        var d1 = Math.random()*0xffffffff|0;
+        var d2 = Math.random()*0xffffffff|0;
+        var d3 = Math.random()*0xffffffff|0;
+        return lut[d0&0xff]+lut[d0>>8&0xff]+lut[d0>>16&0xff]+lut[d0>>24&0xff]+'-'+
+          lut[d1&0xff]+lut[d1>>8&0xff]+'-'+lut[d1>>16&0x0f|0x40]+lut[d1>>24&0xff]+'-'+
+          lut[d2&0x3f|0x80]+lut[d2>>8&0xff]+'-'+lut[d2>>16&0xff]+lut[d2>>24&0xff]+
+          lut[d3&0xff]+lut[d3>>8&0xff]+lut[d3>>16&0xff]+lut[d3>>24&0xff];
+      }
+      return self;
+    })();
+   
+    // Function to display text field for custom message
+    // https://api.jquery.com/change/
+   $("select").change(function() {
+        var customMessageBox = $('[name=custom_block_shakushaku]');
+        cannedMessage = $('[name=canned_message_shakushaku]').val();
+        if (cannedMessage == "Custom") {
+            customMessageBox.show();
+        } 
+        else {
+            customMessageBox.hide();
+        }
+    }); 
+ 
+    // Function to retrieve canned or custom messages
+    //https://stackoverflow.com/questions/2917175/return-multiple-values-in-javascript
+    var messageFunction = function() {
+        var customMessage = document.getElementsByName('custom_message_shakushaku')[0].value;
+        if (cannedMessage == "Custom") {
+            message1 = "custom";
+            message2 = customMessage;
+        } 
+        else {
+            message1 = cannedMessage;
+            message2 = null;
+        }
+        return [message1, message2]
+    }
+
+
+    $('#form_shakushaku').validate({
+        errorClass: "invalid",
+        errorLabelContainer: "#errorcontainer_shakushaku",
+        wrapper: "li",
+        onsubmit: true,
+        rules: {
+            canned_message_shakushaku: {
+                required: true
+            },
+            custom_message_shakushaku: {
+                required: true
+            },
+            emailaddress_shakushaku: {
+                required: true,
+                email: true
+            },
+            firstname_shakushaku: {
+                required: true
+            },
+            lastname_shakushaku: {
+                required: true
+            }
+        },
+        messages: {
+            canned_message_shakushaku: {
+                required: "Please select an option"
+            },
+            custom_message_shakushaku: {
+                required: "Please enter a message"
+            },
+            emailaddress_shakushaku: {
+                required: "We need your email address to contact you",
+                email: "Your email address must be in the format of name@domain.com"
+            },
+            firstname_shakushaku: {
+                required: "We need your first name"
+            },
+            lastname_shakushaku: {
+                required: "We need your last name"
+            }
+        },
+        submitHandler: function(form) {
+            var firstname = document.getElementsByName('firstname_shakushaku')[0].value;
+            var lastname = document.getElementsByName('lastname_shakushaku')[0].value;
+            var emailaddress = document.getElementsByName('emailaddress_shakushaku')[0].value;
+            //var activitycode = document.getElementsByName('activitycode_shakushaku')[0].value;
+            var currentLocation = window.location.href;
+            var message = messageFunction();
+            var message1 = message[0];
+            var message2 = message[1];
+            var date = new Date();
+            var utcdate = date.toJSON(); // Print current UTC date in JSON format
+            var uuid = UUID.generate(); // Generate new UUID
+            var obj = {
+                        "ActivityCode": "75thAnniversaryMessage",
+                        "ActionUrl":currentLocation,
+                        "FormId": "f9043c22-671e-4936-d010-f6f74efda91",
+                        "FirstName": firstname,
+                        "LastName": lastname,
+                        "EmailAddress": emailaddress,
+                        "PostalCode": null,
+                        "ReferrerSourceCode":"WS1675COKE",
+                        "SubmissionDate":utcdate,
+                        "NativeActionTakenId":uuid,
+                        "VerificationToken":"7463d13c-cc9d-4730-87a6-20cb16107e97",
+                        "AdditionalData":
+                        {
+                            "NativeFormId":null,
+                            "SelectedMessage":message1,
+                            "CustomMessage":message2,
+                        }
+                    }; // Configure object
+            var dataString = JSON.stringify(obj);
+            //alert(dataString);
+            
+            // Post data to server
+            $.ajax({
+                contentType: "application/json; charset=utf-8",
+                data: dataString,
+                method: "POST",
+                url: "https://uso.trilogyforms.com/api/formsubmission"
+            })
+                .done(function(data) {
+                    //alert(JSON.stringify(data));
+                    // Close OptinMonster window
+                    $("#closelink_shakushaku")[0].click();
+                })
+                .fail(function(xhr, status, error) {
+                    // Display generic error
+                    var msg = '<label class="invalid">There was an error. Please try again later</label>';
+                    $("#errorcontainer_shakushaku").empty().append(msg).show();
+                });
+        }
+    });
+</script>
