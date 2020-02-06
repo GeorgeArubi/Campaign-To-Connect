@@ -1,0 +1,188 @@
+<style>
+.submit {
+    cursor: pointer;
+    display: block;
+    box-shadow: rgb(255, 255, 255) 0px 0px 0px 0px !important;
+    background-color: #bb133e !important;
+    color: #ffffff !important;
+    background-image: linear-gradient(to right, #8d0e2f, #bb133e) !important;
+    font-family:  "Whitney SSm A", "Whitney SSm B", "Whitney SSm", "Verdana", "Helvetica Neue", "HelveticaNeue", Arial, Helvetica, "Roboto", sans-serif !important;
+    font-size: 16px !important;
+    font-weight: 70 !important;
+    letter-spacing: 0px !important;
+    line-height: 1 !important;
+    margin-bottom: 0px !important;
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+    margin-top: 0px !important;
+    max-width: 100% !important;
+    padding-bottom: 14px !important;
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+    padding-top: 14px !important;
+    text-transform: none !important;
+    width: 100% !important;
+    border-style: none !important;
+    text-decoration: none !important;
+}
+
+form{
+    margin-bottom: 0px !important;
+    margin-left: 50px !important;
+    margin-right: 50px !important;
+    margin-top: 0px !important;
+    max-width: 100% !important;
+    font-family: "Whitney SSm A", "Whitney SSm B", "Whitney SSm", "Verdana", "Helvetica Neue", "HelveticaNeue", Arial, Helvetica, "Roboto", sans-serif  !important;
+    color: #676767;
+}
+
+select{
+    font-family: "Whitney SSm A", "Whitney SSm B", "Whitney SSm", "Verdana", "Helvetica Neue", "HelveticaNeue", Arial, Helvetica, "Roboto", sans-serif  !important;
+    color: #676767;
+    padding-left: 25px !important;
+    padding-right: 25px !important;
+}
+
+table{
+    text-align: left;
+}
+
+#first_name {
+  padding: 10px !important;
+}
+
+label.invalid {
+    color: rgb(255, 0, 0) !important;
+    display: inline-block;
+    font-family: font-family: "Whitney SSm A", "Whitney SSm B", "Whitney SSm", "Verdana", "Helvetica Neue", "HelveticaNeue", Arial, Helvetica, "Roboto", sans-serif  !important;
+    font-size: 12px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0px !important;
+    padding-bottom: 4px !important;
+    text-transform: none !important;
+    text-decoration: none !important;
+}
+</style>
+
+<div id="errorcontainer_shakushaku"></div>
+<form id="form_shakushaku" action="https://uso.trilogyforms.com/save" method="post">
+
+    <select name="ctc_message" id="selected_message" onchange="checkmessage(this);">
+        <option value="" disabled selected="selected">Select Message</option>
+        <option value="Thank you for all you do. We love and support you!">Thank you for all you do. We love and support you!</option>
+        <option value="Thank you for keeping us safe. Stay strong. ">Thank you for keeping us safe. Stay strong. </option>
+        <option value="What you do makes me proud to be an American."> What you do makes me proud to be an American.</option>
+        <option value="I’m grateful for your service.">I’m grateful for your service.</option>
+        <option value="Custom">Add Custom Message</option>
+    </select>
+ 
+    <div id="custom_block" style="display: none;">
+         <br /><br />
+         <textarea name="custom_message" id="custom_shakushaku" maxlength="250" rows="4" cols="50" placeholder="Insert a custom message here or select from the drop down above"></textarea>
+    </div>
+    
+    
+    <br /><br />Sincerely,<br /><br />
+    
+    <table>
+        <tr>
+            <th><label for="firstname_shakushaku">First Name</label></th>
+            <th><label for="lastname_shakushaku">Last Name</label></th> 
+        </tr>
+        <tr>
+            <td><input name="FirstName" required="required" maxlength="100" size="100" type="text" id="firstname_shakushaku" /></td>
+            <td><input name="LastName" required="required" maxlength="100" size="100" type="text" id="lastname_shakushaku" /></td>
+        </tr>
+    </table>
+    
+    <br/><br/>
+
+    <label for="emailaddress_shakushaku">Email* <em>(required)</em></label>
+        <input name="EmailAddress" data-input="email" required="required" type="text" id="emailaddress_shakushaku" />
+        <input type="hidden" name="ActivityCode" id="activitycode_shakushaku" value="ctc-pop" />
+        <input type="hidden" name="message" id="message_shakushaku" value="" />
+        
+    <br/><br/>
+    
+    <button type="submit" name="submit_shakushaku" class="submit" onclick="messageFunction();submitFunction();">SHARE MESSAGE</button>
+    
+</form>
+<a id="closelink_shakushaku" href="#" class="om-trigger-close"></a>
+
+<script type="text/javascript">
+    function checkmessage(that) {
+        if (that.value == "Custom") {
+            //window.alert("check");
+            document.getElementById("custom_block").style.display = "block";
+            output = customMessage;
+        } 
+        else {
+            document.getElementById("custom_block").style.display = "none";
+            output = preWrittenMessage;
+        }
+    }
+    
+    function messageFunction() {
+        var preWrittenMessage = document.getElementById("selected_message").value;
+        var customMessage = document.getElementById("custom_shakushaku").value;
+        output = document.getElementById("message_shakushaku").value;
+
+        if (preWrittenMessage == "Custom") {
+            output = customMessage;
+        } 
+        else {
+            output = preWrittenMessage;
+        }
+    }
+    
+    function submitFunction() {
+        obj = { FirstName: firstname_shakushaku.value, LastName: lastname_shakushaku.value, 
+                EmailAddress: emailaddress_shakushaku.value, Message: output, 
+                ActivityCode: activitycode_shakushaku.value    
+              };
+        dataString = JSON.stringify(obj);
+        //window.alert(dataString);
+    }
+
+   $('#form_shakushaku').trilogyForm({
+        validateOptions:{
+        errorClass: "invalid",
+        errorLabelContainer: "#errorcontainer_shakushaku",
+        onsubmit: true,
+        rules: {
+            emailaddress_shakushaku: {
+                required: true,
+                email: true
+            }
+        },
+        messages: {
+            emailaddress_shakushaku: {
+                required: "We need your email address to contact you",
+                email: "Your email address must be in the format of name@domain.com"
+            }
+        },
+        submitHandler: function(form) {
+            $.ajax({
+                url: form.action,
+                type: form.method,
+                data: dataString,
+                error: function(xhr, status, error) {
+                    // TODO: implement error handler
+                    var msg = '<label class="invalid" for="emailaddress_shakushaku">There was an error. Please try again later</label>';
+                    $("#errorcontainer_shakushaku").empty().append(msg).show();
+                },
+                success: function(data) {
+                    // Close OptinMonster window
+                    $("#closelink_shakushaku")[0].click();
+                }
+            });
+        }
+        }
+    });
+</script>
+
+<script src ="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+integrity ="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin ="anonymous"></script>
+<script src ="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"
+integrity ="sha256-F6h55Qw6sweK+t7SiOJX+2bpSAa3b/fnlrVCJvmEj1A=" crossorigin ="anonymous"></script>
+<script src ="https://cdn.trilogyforms.com/scripts/jquery.trilogyforms-1.0.min.js"></script>
