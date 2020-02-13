@@ -1,4 +1,3 @@
-</style>
 <div id="errorcontainer_siwsibf9iegk4d2"></div>
 <form id="form_siwsibf9iegk4d2">
     <input type="text" name="emailaddress_siwsibf9iegk4d2" />
