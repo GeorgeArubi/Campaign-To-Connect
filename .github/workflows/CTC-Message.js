@@ -1,3 +1,4 @@
+<script type="text/javascript">
 onchange="checkmessage();"
 
 function checkmessage() {
@@ -24,3 +25,4 @@ function messageFunction() {
             output = preWrittenMessage;
         }
        window.alert(output);
+</script>
