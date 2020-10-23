@@ -4,5 +4,6 @@ The purpose of this project is to create a pop-up form with OptinMonster that re
 In the current data flow model, once a user submits a form the data is pushed to ‘Postgres Database 1,’ and every 15 minutes, that data is then pushed to the ‘Transaction Data Store SQL.’ Similarly, the data in the Transaction DataStore SQL (from CTC, Anniversary Messages, Email Sign Up, and IMO/IHO) is synced to the Trilogy Hub SQL every 15 minutes.
 The proposed pop-form was designed to push the retreived data directly to Trilogy Hub.
 
+![alt text](https://github.com/GeorgeArubi/Campaign-To-Connect/blob/master/Data%20Flow.png?raw=true)
 
 The pop-up form utilized the jQuery validation library and during development it was critical that we figured out the logical sequence that the CTC program should follow. For example, how the JavaScript functions, jQuery functions and validations will interact with each other when the pop-up is launched.
